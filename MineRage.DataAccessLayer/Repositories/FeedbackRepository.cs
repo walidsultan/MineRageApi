@@ -1,6 +1,6 @@
 ﻿using MineRage.DataAccessLayer.Models;
 
-namespace MineRage.DataAccessLayer
+namespace MineRage.DataAccessLayer.Repositories
 {
     public class FeedbackRepository:IFeedbackRepository
     {

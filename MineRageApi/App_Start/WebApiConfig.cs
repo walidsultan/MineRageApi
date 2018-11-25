@@ -1,4 +1,4 @@
-﻿using MineRage.DataAccessLayer;
+﻿using MineRage.DataAccessLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,7 @@ namespace MineRageApi
             // Web API configuration and services
             var container = new UnityContainer();
             container.RegisterType<IFeedbackRepository, FeedbackRepository>();
+            container.RegisterType<IHighScoresRepository, HighScoresRepository>();
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes

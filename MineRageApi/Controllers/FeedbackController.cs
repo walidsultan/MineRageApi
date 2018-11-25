@@ -1,5 +1,5 @@
-﻿using MineRage.DataAccessLayer;
-using MineRage.DataAccessLayer.Models;
+﻿using MineRage.DataAccessLayer.Models;
+using MineRage.DataAccessLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

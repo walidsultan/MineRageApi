@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace MineRage.DataAccessLayer
 {
-    public class MineRageDBContext:DbContext
+    public class MineRageDBContext : DbContext
     {
-        public MineRageDBContext() : base("MineRageDBConnectionString") {
+        public MineRageDBContext() : base("MineRageDBConnectionString")
+        {
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -18,9 +19,11 @@ namespace MineRage.DataAccessLayer
             modelBuilder.HasDefaultSchema("walid");
 
             MineRage.DataAccessLayer.Models.Feedback.SetEntityConfiguration(modelBuilder);
+            MineRage.DataAccessLayer.Models.HighScore.SetEntityConfiguration(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Feedback> Feedback { get; set; }
+        public DbSet<HighScore> HighScores { get; set; }
     }
 }
