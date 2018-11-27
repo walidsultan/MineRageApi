@@ -2,6 +2,8 @@
 using MineRage.DataAccessLayer.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Web;
 
 namespace MineRage.DataAccessLayer.Repositories
 {
@@ -11,8 +13,19 @@ namespace MineRage.DataAccessLayer.Repositories
         {
             using (var context = new MineRageDBContext())
             {
-              return  context.HighScores.Where(x => x.Difficulty == (int)difficulty).OrderBy(x => x.Time).ToList();
+                return context.HighScores.Where(x => x.Difficulty == (int)difficulty && x.IsSignedIn).OrderBy(x => x.Time).ToList();
             }
         }
+
+        public void SaveHighscore(HighScore highscore)
+        {
+            using (var context = new MineRageDBContext())
+            {
+                context.HighScores.Add(highscore);
+                context.SaveChanges();
+            }
+        }
+
+   
     }
 }

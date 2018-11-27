@@ -15,6 +15,7 @@ namespace MineRage.DataAccessLayer.Models
         public string IpAddress { get; set; }
         public double Time{ get; set; }
         public int  Difficulty{ get; set; }
+        public bool IsSignedIn { get; set; }
 
         public static void SetEntityConfiguration(DbModelBuilder modelBuilder)
         {
@@ -49,6 +50,11 @@ namespace MineRage.DataAccessLayer.Models
                     .Property(t => t.Difficulty)
                     .HasColumnName("Difficulty")
                     .HasColumnType("int");
+
+            profileConfig
+                    .Property(t => t.IsSignedIn)
+                    .HasColumnName("IsSignedIn")
+                    .HasColumnType("bit");
 
             #endregion
 

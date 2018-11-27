@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace MineRageApi.Controllers
@@ -15,15 +16,41 @@ namespace MineRageApi.Controllers
     {
         IHighScoresRepository _highScoresRepository = null;
 
-        public HighScoresController(IHighScoresRepository highScoresRepository) {
+        public HighScoresController(IHighScoresRepository highScoresRepository)
+        {
             _highScoresRepository = highScoresRepository;
         }
 
         [HttpGet]
         [Route("GetByDifficulty")]
-        public IEnumerable<HighScore> AddFeedback(Difficulty difficulty)
+        public IEnumerable<HighScore> GetHighscores(Difficulty difficulty)
         {
-        return     _highScoresRepository.GetHighScoresByDifficulty(difficulty);
+            return _highScoresRepository.GetHighScoresByDifficulty(difficulty);
+        }
+
+        [HttpPost]
+        [Route("SaveHighscore")]
+        public void SaveHighscore(HighScore highscore)
+        {
+            highscore.IpAddress = GetIPAddress();
+            _highScoresRepository.SaveHighscore(highscore);
+        }
+
+        protected string GetIPAddress()
+        {
+            HttpContext context = HttpContext.Current;
+            string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                string[] addresses = ipAddress.Split(',');
+                if (addresses.Length != 0)
+                {
+                    return addresses[0];
+                }
+            }
+
+            return context.Request.ServerVariables["REMOTE_ADDR"];
         }
     }
 }
