@@ -16,6 +16,8 @@ namespace MineRage.DataAccessLayer.Models
         public double Time{ get; set; }
         public int  Difficulty{ get; set; }
         public bool IsSignedIn { get; set; }
+        public string PhotoUrl { get; set; }
+        public DateTime CreatedDate{ get; set; }
 
         public static void SetEntityConfiguration(DbModelBuilder modelBuilder)
         {
@@ -55,6 +57,16 @@ namespace MineRage.DataAccessLayer.Models
                     .Property(t => t.IsSignedIn)
                     .HasColumnName("IsSignedIn")
                     .HasColumnType("bit");
+
+            profileConfig
+                    .Property(t => t.PhotoUrl)
+                    .HasColumnName("PhotoUrl")
+                    .HasColumnType("nvarchar");
+
+            profileConfig
+                    .Property(t => t.CreatedDate)
+                    .HasColumnName("CreatedDate")
+                    .HasColumnType("datetime");
 
             #endregion
 

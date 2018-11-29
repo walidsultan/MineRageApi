@@ -12,6 +12,7 @@ namespace MineRage.DataAccessLayer.Models
     {
         public int Id { get; set; }
         public string Text { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public static void SetEntityConfiguration(DbModelBuilder modelBuilder)
         {
@@ -31,6 +32,11 @@ namespace MineRage.DataAccessLayer.Models
                 .Property(t => t.Text)
                 .HasColumnName("Text")
                 .HasColumnType("ntext");
+
+            profileConfig
+               .Property(t => t.CreatedDate)
+               .HasColumnName("CreatedDate")
+               .HasColumnType("datetime");
 
             #endregion
 

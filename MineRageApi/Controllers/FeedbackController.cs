@@ -22,6 +22,7 @@ namespace MineRageApi.Controllers
         [Route("save")]
         public void AddFeedback(Feedback feedback)
         {
+            feedback.CreatedDate = DateTime.Now;
             _feedbackRepository.AddFeedback(feedback);
         }
     }

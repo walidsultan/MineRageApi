@@ -33,6 +33,7 @@ namespace MineRageApi.Controllers
         public void SaveHighscore(HighScore highscore)
         {
             highscore.IpAddress = GetIPAddress();
+            highscore.CreatedDate = DateTime.Now;
             _highScoresRepository.SaveHighscore(highscore);
         }
 
