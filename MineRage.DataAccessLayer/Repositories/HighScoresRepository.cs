@@ -13,7 +13,8 @@ namespace MineRage.DataAccessLayer.Repositories
         {
             using (var context = new MineRageDBContext())
             {
-                return context.HighScores.Where(x => x.Difficulty == (int)difficulty && x.IsSignedIn).OrderBy(x => x.Time).ToList();
+                return context.HighScores.Where(x => x.Difficulty == (int)difficulty && x.IsSignedIn).GroupBy(x => x.Name).Select(x =>
+                  x.OrderBy(z => z.Time).FirstOrDefault()).OrderBy(x => x.Time).ToList();
             }
         }
 
