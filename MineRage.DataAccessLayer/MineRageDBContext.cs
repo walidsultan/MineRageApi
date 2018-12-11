@@ -20,10 +20,12 @@ namespace MineRage.DataAccessLayer
 
             MineRage.DataAccessLayer.Models.Feedback.SetEntityConfiguration(modelBuilder);
             MineRage.DataAccessLayer.Models.HighScore.SetEntityConfiguration(modelBuilder);
+            MineRage.DataAccessLayer.Models.Log.SetEntityConfiguration(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Feedback> Feedback { get; set; }
         public DbSet<HighScore> HighScores { get; set; }
+        public DbSet<Log> Logs { get; set; }
     }
 }

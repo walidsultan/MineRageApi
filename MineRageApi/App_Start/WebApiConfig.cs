@@ -15,6 +15,7 @@ namespace MineRageApi
             var container = new UnityContainer();
             container.RegisterType<IFeedbackRepository, FeedbackRepository>();
             container.RegisterType<IHighScoresRepository, HighScoresRepository>();
+            container.RegisterType<ILogsRepository, LogsRepository>();
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes

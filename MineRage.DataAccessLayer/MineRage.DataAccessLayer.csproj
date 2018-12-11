@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Difficulty.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Repositories\ILogsRepository.cs" />
+    <Compile Include="Repositories\LogsRepository.cs" />
     <Compile Include="Repositories\HighScoresRepository.cs" />
     <Compile Include="Repositories\FeedbackRepository.cs" />
     <Compile Include="Repositories\IFeedbackRepository.cs" />
